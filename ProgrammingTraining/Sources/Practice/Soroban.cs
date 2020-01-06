@@ -50,7 +50,7 @@ namespace ProgrammingTraining
         private static readonly string StringSeparater = CharSeparater.ToString();
 
         /// <summary>
-        /// 入力値をそろばん文字列として出力する
+        /// 数値をそろばん文字列として出力する
         /// </summary>
         /// <param name="num"></param>
         public static string[] Output(ulong num, int length)
@@ -120,7 +120,7 @@ namespace ProgrammingTraining
         }
 
         /// <summary>
-        /// 
+        /// そろばん文字列を数値に変換する
         /// </summary>
         /// <param name="soroban"></param>
         /// <returns></returns>
@@ -156,21 +156,24 @@ namespace ProgrammingTraining
         }
 
         /// <summary>
-        /// 
+        /// コンソール出力ユーティリティ
         /// </summary>
         /// <param name="soroban"></param>
         public static void Print(string [] soroban)
         {
             for (int i = 0; i < TextLength; ++i)
             {
-                System.Console.WriteLine(soroban[i]);
+                Console.WriteLine(soroban[i]);
             }
         }
+    }
 
-        public static void Test()
+    class SorobanTest : IPracticeTest
+    {
+        public bool Test()
         {
-            string[] sorobanA = 
-            {
+            string[] sorobanA =
+{
                 "***|*||||*",
                 "|||*|****|",
                 "==========",
@@ -192,19 +195,21 @@ namespace ProgrammingTraining
                 "********|*"
             };
 
-            var a = Input(sorobanA);
-            var b = Input(sorobanB);
+            var a = Soroban.Input(sorobanA);
+            var b = Soroban.Input(sorobanB);
 
             Console.WriteLine("SorobanA is {0}.", a);
             Console.WriteLine("SorobanB is {0}.", b);
 
-            var c = Output(UInt64.MaxValue, 32);
+            var c = Soroban.Output(UInt64.MaxValue, 32);
 
             Console.WriteLine();
             Console.WriteLine("Print SorobanC in 32 characters");
-            Print(c);
+            Soroban.Print(c);
 
-            Console.WriteLine("SorobanC is {0}.", Input(c));
+            Console.WriteLine("SorobanC is {0}.", Soroban.Input(c));
+
+            return true;
         }
     }
 }

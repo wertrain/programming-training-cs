@@ -10,7 +10,15 @@ namespace ProgrammingTraining
     {
         static void Main(string[] args)
         {
-            Soroban.Test();
+            var tests = new List<IPracticeTest>();
+            tests.Add(new SorobanTest());
+
+            foreach (var test in tests)
+            {
+                Console.WriteLine("######## START - {0} ########", test.GetType().Name);
+                test.Test();
+                Console.WriteLine("########  END  - {0} ########", test.GetType().Name);
+            }
         }
     }
 }
